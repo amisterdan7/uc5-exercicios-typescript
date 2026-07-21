@@ -1,12 +1,5 @@
 import { products } from "./exercise1";
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  idCategory: number;
-}
+import type { Product } from "./exercise1";;
 
 export function searchProductsByText(list: Product[], searchTerm: string): Product[] {
   if (!searchTerm.trim()) {
@@ -20,6 +13,6 @@ export function searchProductsByText(list: Product[], searchTerm: string): Produ
   );
 }
 
-console.log("=== EXERCISE 2 ===");
+console.log("\n=== EXERCISE 2 ===");
 console.log("Search 'mouse':", searchProductsByText(products, "mouse"));
 console.log("Empty search:", searchProductsByText(products, ""));
