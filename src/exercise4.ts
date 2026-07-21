@@ -1,12 +1,5 @@
 import { products } from "./exercise1";
-
-interface Product {
-    id: number;
-    name: string;
-    quantity: number;
-    price: number;
-    idCategory: number;
-}
+import type { Product } from "./exercise1";
 
 export function fetchProductFromDatabase(id: number, list: Product[]): Promise<Product>{
     return new Promise((resolve, reject) => {
@@ -17,7 +10,7 @@ export function fetchProductFromDatabase(id: number, list: Product[]): Promise<P
                 resolve(product)
             }
             else{
-                reject(`Product with ID ${id} not found in the database.`)
+                 reject(new Error(`Product with ID ${id} not found in the database.`));
             }
         }, 2000);
     });
@@ -26,6 +19,7 @@ export function fetchProductFromDatabase(id: number, list: Product[]): Promise<P
 async function testFetchProduct() {
     console.log("\n\n === EXERCISE 4 ===");
 
+    
     try {
         const found = await fetchProductFromDatabase(2, products);
         console.log("Product found:", found);
